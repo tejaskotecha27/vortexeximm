@@ -14,10 +14,23 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-app.use(['/api', '/'], catalogRoutes);
-app.use(['/api/products', '/products'], productRoutes);
-app.use(['/api/orders', '/orders'], orderRoutes);
-app.use(['/api/inquiries', '/inquiries'], inquiryRoutes);
+// Logging middleware for debugging routes on Vercel
+app.use((req, res, next) => {
+  console.log(`[ROUTE LOG] Method: ${req.method} | URL: ${req.url} | Original: ${req.originalUrl}`);
+  next();
+});
+
+app.use('/api', catalogRoutes);
+app.use('/', catalogRoutes);
+
+app.use('/api/products', productRoutes);
+app.use('/products', productRoutes);
+
+app.use('/api/orders', orderRoutes);
+app.use('/orders', orderRoutes);
+
+app.use('/api/inquiries', inquiryRoutes);
+app.use('/inquiries', inquiryRoutes);
 
 app.get('/', (req, res) => {
   res.send('VortexExim API is running');
