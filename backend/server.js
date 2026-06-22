@@ -32,8 +32,12 @@ app.use('/orders', orderRoutes);
 app.use('/api/inquiries', inquiryRoutes);
 app.use('/inquiries', inquiryRoutes);
 
-app.get('/', (req, res) => {
-  res.send('VortexExim API is running');
+const path = require('path');
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// For all other routes, serve index.html (client-side React routing fallback)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 const { MongoMemoryServer } = require('mongodb-memory-server');
