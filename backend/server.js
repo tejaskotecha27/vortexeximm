@@ -40,7 +40,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
-const { MongoMemoryServer } = require('mongodb-memory-server');
 const Product = require('./models/Product');
 const { seedData } = require('./seed');
 
@@ -49,12 +48,16 @@ const connectDB = async () => {
     let mongoUri = process.env.MONGO_URI;
     
     if (!mongoUri || mongoUri.includes('127.0.0.1')) {
+      if (process.env.NODE_ENV === 'production' || process.env.RENDER === 'true') {
+        throw new Error('Database connection failed: MONGO_URI is missing or invalid in production. Please set a valid MONGO_URI in your Render Environment Variables (e.g., from MongoDB Atlas).');
+      }
       try {
         console.log('Attempting connection to local MongoDB...');
         await mongoose.connect('mongodb://127.0.0.1:27017/vortexexim', { serverSelectionTimeoutMS: 2000 });
         console.log('Local MongoDB Connected');
       } catch (e) {
         console.log('Local MongoDB not running. Starting in-memory MongoDB...');
+        const { MongoMemoryServer } = require('mongodb-memory-server');
         const mongoServer = await MongoMemoryServer.create();
         mongoUri = mongoServer.getUri();
         await mongoose.connect(mongoUri);
