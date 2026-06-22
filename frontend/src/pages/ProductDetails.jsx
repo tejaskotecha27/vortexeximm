@@ -46,8 +46,12 @@ const ProductDetails = () => {
           <Row className="g-0">
             <Col lg={6} className="bg-light">
               <img
-                src={product.image}
+                src={product.image || '/imgs/about_logistics.png'}
                 alt={product.name}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/imgs/about_logistics.png';
+                }}
                 className="img-fluid w-100 h-100"
                 style={{ objectFit: 'cover', minHeight: '500px' }}
               />

@@ -61,8 +61,12 @@ const Products = () => {
                   <div className="position-relative" style={{ height: '280px', overflow: 'hidden' }}>
                     <Card.Img 
                       variant="top" 
-                      src={product.image || 'https://images.unsplash.com/photo-1586528116311-ad8ed3c84a0f?q=80&w=2000'} 
+                      src={product.image || '/imgs/about_logistics.png'} 
                       alt={product.name}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/imgs/about_logistics.png';
+                      }}
                       style={{ objectFit: 'cover', height: '100%', width: '100%' }}
                     />
                     <div className="position-absolute top-0 end-0 p-3">

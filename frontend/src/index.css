@@ -5,7 +5,7 @@
   --primary-color: #0A192F; /* Rich Dark Corporate Navy */
   --secondary-color: #004aad; /* Logo Blue */
   --secondary-bright: #0077b6; /* Vivid Blue for highlights */
-  --accent-color: #F7C35F; /* Premium Gold Accent */
+  --accent-color: #004aad; /* Brand Dark Blue Accent */
   --heading-color: #0F172A; /* Rich Slate Dark */
   --bg-light: #F8FAFC; /* Clean Slate Light Background */
   --text-dark: #334155; /* Slate Dark Gray */
@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-primary-custom .text-secondary-custom,
 .text-white .text-secondary-custom {
-  color: var(--accent-color) !important; /* Gold on dark bg for contrast and beauty */
+  color: var(--accent-color) !important; /* Dark Blue on dark bg for contrast and beauty */
 }
 
 /* Premium Navbar */
@@ -75,7 +75,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar-custom .navbar-brand span {
-  color: var(--accent-color); /* Premium Gold */
+  color: var(--accent-color); /* Premium Dark Blue */
 }
 
 .navbar-custom .nav-link {
@@ -137,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero Section */
 .hero-section {
-  background: var(--hero-gradient), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2070') center/cover no-repeat;
+  background: var(--hero-gradient), url('/imgs/hero_background.png') center/cover no-repeat;
   min-height: 85vh;
   display: flex;
   align-items: center;

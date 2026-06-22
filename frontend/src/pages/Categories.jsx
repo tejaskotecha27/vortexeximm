@@ -61,8 +61,12 @@ const Categories = () => {
                   <div className="position-relative" style={{ height: '260px', overflow: 'hidden' }}>
                     <Card.Img 
                       variant="top" 
-                      src={categoryImages[category] || 'https://images.unsplash.com/photo-1586528116311-ad8ed3c84a0f?q=80&w=2000'} 
+                      src={categoryImages[category] || '/imgs/about_logistics.png'} 
                       alt={category}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/imgs/about_logistics.png';
+                      }}
                       style={{ objectFit: 'cover', height: '100%', width: '100%', transition: 'transform 0.5s ease' }}
                     />
                     <div className="position-absolute top-0 start-0 w-100 h-100" style={{ background: 'linear-gradient(to bottom, transparent 60%, rgba(10, 25, 47, 0.4))' }}></div>

@@ -18,7 +18,7 @@ const About = () => {
           <Row className="align-items-center gy-5">
             <Col lg={6}>
               <img 
-                src="https://images.unsplash.com/photo-1586528116311-ad8ed3c84a0f?q=80&w=2070&auto=format&fit=crop" 
+                src="/imgs/about_logistics.png" 
                 alt="Logistics container" 
                 className="img-fluid rounded-4 shadow-lg"
               />
