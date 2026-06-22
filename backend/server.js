@@ -14,10 +14,10 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-app.use('/api', catalogRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/inquiries', inquiryRoutes);
+app.use(['/api', '/'], catalogRoutes);
+app.use(['/api/products', '/products'], productRoutes);
+app.use(['/api/orders', '/orders'], orderRoutes);
+app.use(['/api/inquiries', '/inquiries'], inquiryRoutes);
 
 app.get('/', (req, res) => {
   res.send('VortexExim API is running');
