@@ -16,15 +16,4 @@ execSync('npm install', { cwd: path.join(__dirname, 'backend'), stdio: 'inherit'
 console.log('Compiling frontend with Vite...');
 execSync('npm run build', { cwd: path.join(__dirname, 'frontend'), stdio: 'inherit' });
 
-// 4. Clean root dist directory
-const distPath = path.join(__dirname, 'dist');
-if (fs.existsSync(distPath)) {
-  console.log('Cleaning old root dist directory...');
-  fs.rmSync(distPath, { recursive: true, force: true });
-}
-
-// 5. Copy frontend/dist to root dist
-console.log('Copying build output to root dist directory...');
-fs.cpSync(path.join(__dirname, 'frontend', 'dist'), distPath, { recursive: true });
-
 console.log('Build pipeline completed successfully!');
